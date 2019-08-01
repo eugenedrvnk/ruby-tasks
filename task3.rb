@@ -6,12 +6,24 @@ vocabulary = [
     {
         :en => 'dog',
         :ru => ['sobachka', 'sobaka', 'bobik', 'tuzik', 'pes'],
+    }, 
+    {
+        :en => 'cat',
+        :ru => ['koshka', 'kotenok', 'koteika', 'kot']
+    },
+    {
+        :en => 'table',
+        :ru => ['stol', 'tablica', 'raspisanie']
+    },
+    {
+        :en => 'chair',
+        :ru => ['stul', 'kreslo', 'predsedatel']
     }
+
 ]
 
 def third vocabulary
     words_count = vocabulary.length
-    puts words_count
     answers = {
         :correct => {
             :count => 0,
@@ -35,7 +47,7 @@ def third vocabulary
             answers[:correct][:count] += 1
             answers[:correct][:id].push(i)
             puts "Keep it up! Already #{answers[:correct][:count]} correct answers!"
-            puts "That's some other translations for #{word_info[:en]}"
+            puts "That're some other translations for #{word_info[:en]}"
             (0..word_info[:ru].length-1).each {|i|
                 word = word_info[:ru][i]
                 next if word == input_word
