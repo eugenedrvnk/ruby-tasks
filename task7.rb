@@ -21,10 +21,15 @@ def seven(length, difFrom, difTo)
 
     min = array.min
 
+    puts "\n min digit = #{min}\n\n"
+
     print array.to_s + "\n"
 
     (min+difFrom..min+difTo).each {|number|
-        hash[number-min] = coincidenceAmount(array, number)
+        subHash = coincidenceAmount(array, number)
+        if subHash.length != 0
+            hash[number-min] = subHash        
+        end
     }
 
     puts hash
