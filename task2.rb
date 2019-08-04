@@ -1,18 +1,11 @@
 def second students
-    length = students.length
-    students_sorted = students.sort_by {|key, value| 
-        value
-    }
 
-    students_it = students_sorted.slice!(length-3..length-1).reverse
-    students_em = students_sorted.delete_if {|student|
-        student[1] < 60
-    }
-
-    if students_em.length > 3 
-        students_em.reverse!
-        students_em.slice!(3..-1)
+    students_sorted = students.sort do |a,b|
+        b[1] - a[1]
     end
+
+    students_it = students_sorted[0..2]
+    students_em = students_sorted[3..5].select {|item| item[1] > 60}
 
     puts '- - - - - - - - - - -'
     puts 'IT - students:'
@@ -38,4 +31,3 @@ second({
     "Vimir" => 64,
     "Mir" => 94
 })
-   
