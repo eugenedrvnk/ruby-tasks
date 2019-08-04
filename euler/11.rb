@@ -1,6 +1,66 @@
 def largest_grid_product str
   arr = string_to_arr str
-  p arr[-1]
+  max = 0
+
+  20.times do |i|
+    20.times do |j|
+      temp = checkLines(i,j,arr)
+      max = temp if temp > max
+    end
+  end
+  p max
+end
+
+def checkLines(i,j,arr)
+  [checkVertical(i,j,arr,4),
+  checkHorizontal(i,j,arr,4),
+  checkDiagonalRight(i,j,arr,4),
+  checkDiagonalLeft(i,j,arr,4)].max
+end
+
+def checkVertical(i,j,arr,length)
+  res = 1
+  i.upto(i+length-1) do |i|
+    arr[i] = 0 if arr[i].nil?
+    res *= arr[i][j].to_i
+  end
+  res
+end
+
+def checkHorizontal(i,j,arr,length)
+  res = 1
+  j.upto(j+length-1) do |j|
+    arr[i][j] = 0 if arr[i][j].nil?
+    res *= arr[i][j].to_i
+  end
+  res
+end
+
+def checkDiagonalRight(i,j,arr,length)
+  res = 1
+  length.times do
+    arr[i] = 0 if arr[i].nil?
+    arr[i][j] = 0 if arr[i][j].nil?
+    res *= arr[i][j].to_i
+    i+=1
+    j+=1
+  end
+  res
+end
+
+def checkDiagonalLeft(i,j,arr,length)
+  res = 1
+  length.times do
+    arr[i] = 0 if arr[i].nil?
+    if j < 0
+      res = 0
+    else
+      res *= arr[i][j].to_i
+    end
+    i+=1
+    j-=1
+  end
+  res
 end
 
 def string_to_arr str
