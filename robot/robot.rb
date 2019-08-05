@@ -75,6 +75,6 @@ class Robot
         
     end
 end
-
+ 
 robot = Robot.new
 robot.validators
