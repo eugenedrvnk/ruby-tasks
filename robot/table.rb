@@ -20,7 +20,3 @@ class Table
         result_array
     end
 end
-
-# Table.new ({rows_count:6, columns_count: 6})
-
-# p table.generate_array
