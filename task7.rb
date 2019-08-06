@@ -10,7 +10,7 @@ def seven(length, difFrom, difTo)
         array.each_with_index {|item, index|
             if item == number
                 subHash[index] = number
-            end
+            end 
         }
         subHash
     end
